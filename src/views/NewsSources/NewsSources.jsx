@@ -15,13 +15,10 @@ export default class NewsSources extends Component {
    }
 
    getNewsSources = async () => {
-      const key = await axios.get('/key'); //fetching api key from local server (.env file)
       try {
-         let res = await axios.get(`https://newsapi.org/v2/sources`, {
-            'headers': { 'Authorization': key.data },
-            'params': { 'language': 'en', 'category': 'technology' }
-         })
+         let res = await axios.get(`/sources`);
          await this.setState({ newsSources: res.data.sources })
+         console.log(res.data.sources)
          console.log('sources retrieved')
       } catch (error) {
          console.log(error)
@@ -53,6 +50,7 @@ export default class NewsSources extends Component {
                <div className="sources-container">
                   {sources}
                </div>
+               <h6>Powered by NewsAPI.org</h6>
             </div>
          </div>
       )

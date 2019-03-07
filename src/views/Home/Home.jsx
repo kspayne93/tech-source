@@ -16,16 +16,11 @@ export default class Home extends Component {
    }
 
    getTrendingArticles = async () => {
-      const key = await axios.get('/key'); //fetching api key from local server (.env file)
       const { page } = this.state;
       try {
-         let res = await axios.get(`https://newsapi.org/v2/top-headlines`, {
-            'headers': { 'Authorization': key.data },
-            'params': { 'country': 'us', 'category': 'technology', 'page': page }
-         })
+         let res = await axios.get(`/topHeadlines/${page}`)
          await this.setState({ articles: res.data.articles })
-         console.log('articles retrieved')
-      } catch(error) {
+      } catch (error) {
          console.log(error)
       }
    }
@@ -33,8 +28,9 @@ export default class Home extends Component {
    handlePageClick = async (num) => {
       await this.setState({ page: this.state.page + num })
       if (this.state.page <= 1) {
-         this.setState({ page: 1 })
+         await this.setState({ page: 1 })
       }
+      console.log(this.state.page)
       await this.getTrendingArticles();
    }
 
@@ -74,6 +70,7 @@ export default class Home extends Component {
                      <button onClick={() => this.handlePageClick(1)}>Next Page</button>
                   </div>
                }
+               <h6>Powered by NewsAPI.org</h6>
             </div>
          </div>
       )

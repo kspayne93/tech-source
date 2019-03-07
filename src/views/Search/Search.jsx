@@ -18,13 +18,9 @@ export default class Search extends Component {
    }
 
    getArticles = async () => {
-      const key = await axios.get('/key'); //fetching api key from local server (.env file)
       const { page, userInput, sortBy } = this.state;
       try {
-         let res = await axios.get(`https://newsapi.org/v2/everything`, {
-            'headers': { 'Authorization': key.data },
-            'params': { 'q': userInput, 'page': page, 'sortBy': sortBy }
-         })
+         let res = await axios.get(`/search?q=${userInput}&page=${page}&sortBy=${sortBy}`)
          await this.setState({ articles: res.data.articles })
       } catch (error) {
          console.log(error)
@@ -70,6 +66,9 @@ export default class Search extends Component {
             <div className="home-content">
                <div className="article-container">
                   {articleCards}
+                  {
+                     this.state.articles.length === 0 && <h1>Search Tech News from around the globe</h1>
+                  }
                </div>
                {
                   this.state.articles.length > 0 &&
@@ -78,6 +77,7 @@ export default class Search extends Component {
                      <button onClick={() => this.handlePageClick(1)}>Next Page</button>
                   </div>
                }
+               <h6>Powered by NewsAPI.org</h6>
             </div>
          </div>
       )
