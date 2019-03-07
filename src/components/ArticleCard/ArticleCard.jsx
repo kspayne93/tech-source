@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './ArticleCard.scss';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 
-export default function ArticleCard(props) {
-   const { source, title, description, urlToImage, publishedAt, url } = props.article;
-   let date = moment(publishedAt, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY')
-   return (
-         <div className='article-card-main'>
-            <div className='img-container'>
-               <img src={urlToImage} alt="article" />
-            </div>
+export default class ArticleCard extends Component {
+   state = {
+      showArticle: false,
+   }
+
+   hideArticle = async () => {
+      await this.setState({ showArticle: false })
+   }
+
+   render() {
+      const { source, title, author, description, urlToImage, publishedAt, url } = this.props.article;
+      let date = moment(publishedAt, 'YYYY-MM-DD').format('dddd, MMMM Do YYYY');
+      let href = `https://www.${source.name}`;
+
+      return (
+         <div className='article-card-main' >
+            <a href={url} target='_blank' rel="noopener noreferrer">
+               <div className='img-container'>
+                  <img src={urlToImage} alt="article" />
+               </div>
+            </a>
             <div className="article-info">
-               <div>
+               <div className='article-header'>
+                  <div>
+                     <a href={url} target='_blank' rel="noopener noreferrer">
                   <h3>{title}</h3>
-                  <p>{source.name}</p>
-                  <p>{date}</p>
+                  </a>
+                  </div>
+                  <div>
+                     <span>By: {author} | </span> <span>{date} | </span> <span><a href={href} target='_blank' rel='noopener noreferrer' style={{ color: 'salmon' }} >{source.name}</a></span>
+                  </div>
                </div>
                <div>
                   <p>{description}</p>
                </div>
             </div>
          </div>
-   )
+      )
+   }
 }

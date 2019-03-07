@@ -7,12 +7,13 @@
    justify-content: flex-start;
    align-items: center;
    margin: 2rem;
+   z-index: 2;
 }
 
 .img-container {
    img {
       height: 12rem;
-      width: 24rem;
+      width: 22rem;
       border-radius: 8px;
       overflow: hidden;
    }
@@ -38,4 +39,12 @@
          text-align: left;
       }
    }
+}
+
+.article-header {
+   display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
 }
