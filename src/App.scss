@@ -1,0 +1,32 @@
+.App {
+  text-align: center;
+}
+
+.link {
+  text-decoration: none;
+  color: white;
+
+  &:visited {
+    text-decoration: none;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+
+  &:hover, &:active {
+    text-decoration: none;
+  }
+}
+
+a {
+  color: black;
+}
+
+* {
+  box-sizing: border-box;
+}
