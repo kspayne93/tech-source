@@ -33,7 +33,7 @@ export default class ArticleCard extends Component {
                   </a>
                   </div>
                   <div>
-                     <span>By: {author} | </span> <span>{date} | </span> <span><a href={href} target='_blank' rel='noopener noreferrer' style={{ color: 'salmon' }} >{source.name}</a></span>
+                     <span style={{ color: 'gray' }}>By: {author} | </span> <span style={{ color: 'gray'}} >{date} | </span> <span><a href={href} target='_blank' rel='noopener noreferrer' style={{ color: 'salmon' }} >{source.name}</a></span>
                   </div>
                </div>
                <div>
