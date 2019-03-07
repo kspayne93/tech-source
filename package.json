@@ -10,6 +10,7 @@
     "express": "^4.16.4",
     "hash-router": "^0.4.0",
     "moment": "^2.24.0",
+    "newsapi": "^2.4.0",
     "node-sass": "^4.11.0",
     "nodemon": "^1.18.10",
     "react": "^16.8.3",
