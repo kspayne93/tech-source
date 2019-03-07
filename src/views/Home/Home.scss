@@ -1,0 +1,28 @@
+@import '../../globalStyles.scss';
+
+.homepage-main {
+   display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+}
+
+
+.page-button-container {
+   width: 100vw;
+   height: 2rem;
+   background-color: white;
+}
+
+.home-content {
+   width: 100vw;
+   height: auto;
+   position: absolute;
+   top: calc(#{$navbar-height} *2);   
+   display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+}
