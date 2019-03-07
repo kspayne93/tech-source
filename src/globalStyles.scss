@@ -1,0 +1,17 @@
+$navbar-height: 10vh;
+
+.page-subheader {
+   width: 100vw;
+   height: $navbar-height;
+   position: fixed;
+   top: $navbar-height;
+   z-index: 2;
+   background-color: white;
+   h1 {
+      margin: 0;
+   }
+}
+
+.article-container {
+   width: 80vw;
+}
