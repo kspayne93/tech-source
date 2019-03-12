@@ -10,7 +10,7 @@ export default class Search extends Component {
       articles: [],
       page: 1,
       userInput: '',
-      sortBy: 'relevancy',
+      sortBy: 'publishedAt',
    }
 
    componentDidMount = async () => {
@@ -20,13 +20,11 @@ export default class Search extends Component {
    getArticles = async () => {
       const { page, userInput, sortBy } = this.state;
       try {
-         let res = await axios.get(`/search?q=${userInput}&page=${page}&sortBy=${sortBy}`)
+         let res = await axios.get(`/search?q=${userInput}&sortBy=${sortBy}&page=${page}`)
          await this.setState({ articles: res.data.articles })
       } catch (error) {
          console.log(error)
       }
-
-      console.log('articles retrieved')
    }
 
    handlePageClick = async (num) => {
@@ -34,6 +32,12 @@ export default class Search extends Component {
       if (this.state.page <= 1) {
          this.setState({ page: 1 })
       }
+      await this.getArticles();
+   }
+
+   handleSelect = async (event) => {
+      await this.setState({ sortBy: event.target.value });
+      console.log(this.state.sortBy)
       await this.getArticles();
    }
 
@@ -53,15 +57,26 @@ export default class Search extends Component {
          <div className='homepage-main'>
             <Navbar />
             <div className='page-subheader'>
-               <input type="text" placeholder='Search' onChange={(e) => this.setState({ userInput: e.target.value })} />
-               <button onClick={() => this.getArticles()}>Search</button>
-               {
-                  this.state.articles.length > 0 &&
-                  <div className='page-button-container'>
-                     <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
-                     <button onClick={() => this.handlePageClick(1)}>Next Page</button>
-                  </div>
-               }
+               <div></div>
+               <div>
+                  <input type="text" placeholder='Search' onChange={(e) => this.setState({ userInput: e.target.value })} />
+                  <button onClick={() => this.getArticles()}>Search</button>
+               </div>
+               <div>
+                  {
+                     this.state.articles.length > 0 &&
+                     <div className='page-button-container'>
+                        <span style={{ fontFamily: 'arial', fontSize: '12px'}} >Sort By: </span>
+                        <select name="sort" id="sort" onChange={this.handleSelect}>
+                           <option value="publishedAt">Most Recent</option>
+                           <option value="relevancy">Relevancy</option>
+                           <option value="popularity">Popularity</option>
+                        </select>
+                        <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
+                        <button onClick={() => this.handlePageClick(1)}>Next Page</button>
+                     </div>
+                  }
+               </div>
             </div>
             <div className="home-content">
                <div className="article-container">
