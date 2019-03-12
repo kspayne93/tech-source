@@ -39,8 +39,8 @@ app.get('/sources', async (req, res) => {
 })
 
 //Search Query
-app.get('/search/', async (req, res) => {
-   const { q, page, sortBy } = req.query;
+app.get('/search', async (req, res) => {
+   const { q, sortBy, page } = req.query;
    let searchResults = await newsapi.v2.everything({
       q: `${q}`,
       sources: 'ars-technica, crypto-coin-news, engadget, hackernews, recode, techcrunch, techradar, the-next-web, the-verge, wired',
