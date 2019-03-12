@@ -19,3 +19,27 @@ $navbar-height: 10vh;
 a {
    text-decoration: none;
 }
+
+.page-subheader {
+   font-family: 'Share Tech Mono', monospace;
+   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+   align-items: center;
+   align-content: center;
+   div {
+      flex: 1;
+   }
+}
+
+.page-button-container {
+   height: 2rem;
+   background-color: white;
+   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-end;
+   align-items: center;
+   margin-right: 2rem;
+}

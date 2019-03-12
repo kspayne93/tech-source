@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import './ArticleCard.scss';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
 
 
 export default class ArticleCard extends Component {
@@ -33,7 +32,9 @@ export default class ArticleCard extends Component {
                   </a>
                   </div>
                   <div>
-                     <span style={{ color: 'gray' }}>By: {author} | </span> <span style={{ color: 'gray'}} >{date} | </span> <span><a href={href} target='_blank' rel='noopener noreferrer' style={{ color: 'salmon' }} >{source.name}</a></span>
+                     <span style={{ color: 'gray' }}>By: {author} | </span>
+                     <span style={{ color: 'gray'}} >{date} | </span>
+                     <span> <a href={href} target='_blank' rel='noopener noreferrer' style={{ color: 'salmon' }} >{source.name}</a> </span>
                   </div>
                </div>
                <div>

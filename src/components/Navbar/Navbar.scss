@@ -15,11 +15,17 @@
    top: 0;
    left: 0;
    z-index: 2;
+   font-family: 'Share Tech Mono', monospace;
+   
+   div {
+      margin: 0 2rem;
+   }
 }
 
 .nav-logo-container {
    display: flex;
    flex: 1;
+
 }
 
 .nav-button-container {
@@ -31,6 +37,6 @@
 	justify-content: flex-end;
    align-items: center;
       p {
-         margin: 0 10px;
+         margin-left: 1.5rem;
       }
 }

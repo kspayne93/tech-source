@@ -30,8 +30,8 @@ export default class Home extends Component {
       if (this.state.page <= 1) {
          await this.setState({ page: 1 })
       }
-      console.log(this.state.page)
       await this.getTrendingArticles();
+      await window.scrollTo(0, 0);
    }
 
 
@@ -50,14 +50,19 @@ export default class Home extends Component {
          <div className='homepage-main'>
             <Navbar />
             <div className='page-subheader'>
-               <h1>Trending Stories</h1>
-               {
-                  this.state.articles.length > 0 &&
-                  <div className='page-button-container'>
-                     <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
-                     <button onClick={() => this.handlePageClick(1)}>Next Page</button>
-                  </div>
-               }
+               <div></div>
+               <div>
+                  <h1>Trending Stories</h1>
+               </div>
+               <div>
+                  {
+                     this.state.articles.length > 0 &&
+                     <div className='page-button-container'>
+                        <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
+                        <button onClick={() => this.handlePageClick(1)}>Next Page</button>
+                     </div>
+                  }
+               </div>
             </div>
             <div className="home-content">
                <div className="article-container">

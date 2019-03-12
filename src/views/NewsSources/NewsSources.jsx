@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import './NewsSources.scss';
 import Navbar from '../../components/Navbar/Navbar';
@@ -44,7 +43,7 @@ export default class NewsSources extends Component {
          <div className='sources-main'>
             <Navbar />
             <div className='page-subheader'>
-               <h1>News Sources</h1>
+               <h1>Tech News Sources</h1>
             </div>
             <div className="sources-content">
                <div className="sources-container">

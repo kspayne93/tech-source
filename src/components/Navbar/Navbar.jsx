@@ -13,7 +13,7 @@ export default function Navbar() {
       <div className='navbar-main'>
          <div className="nav-logo-container">
             <Link to='/home' style={ styles }>
-               TechSource
+               <h1>TechSource</h1>
             </Link>
          </div>
          <div className="nav-button-container">
