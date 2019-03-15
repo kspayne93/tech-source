@@ -65,15 +65,15 @@ export default class Search extends Component {
                <div>
                   {
                      this.state.articles.length > 0 &&
-                     <div className='page-button-container'>
-                        <span style={{ fontFamily: 'arial', fontSize: '12px'}} >Sort By: </span>
-                        <select name="sort" id="sort" onChange={this.handleSelect}>
+                     <div className='page-button-container top-buttons'>
+                        <span style={{ fontFamily: 'arial', fontSize: '12px' }} >Sort By: </span>
+                        <select name="sort" id="sort" onChange={this.handleSelect} style={{ marginRight: '2rem' }}>
                            <option value="publishedAt">Most Recent</option>
                            <option value="relevancy">Relevancy</option>
                            <option value="popularity">Popularity</option>
                         </select>
-                        <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
-                        <button onClick={() => this.handlePageClick(1)}>Next Page</button>
+                        <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
+                        <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
                      </div>
                   }
                </div>
@@ -88,8 +88,8 @@ export default class Search extends Component {
                {
                   this.state.articles.length > 0 &&
                   <div className='page-button-container'>
-                     <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
-                     <button onClick={() => this.handlePageClick(1)}>Next Page</button>
+                     <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
+                     <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
                   </div>
                }
                <h6>Powered by NewsAPI.org</h6>

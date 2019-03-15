@@ -57,9 +57,9 @@ export default class Home extends Component {
                <div>
                   {
                      this.state.articles.length > 0 &&
-                     <div className='page-button-container'>
-                        <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
-                        <button onClick={() => this.handlePageClick(1)}>Next Page</button>
+                     <div className='page-button-container top-buttons'>
+                        <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
+                        <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
                      </div>
                   }
                </div>
@@ -71,8 +71,8 @@ export default class Home extends Component {
                {
                   this.state.articles.length > 0 &&
                   <div className='page-button-container'>
-                     <button onClick={() => this.handlePageClick(-1)}>Previous Page</button>
-                     <button onClick={() => this.handlePageClick(1)}>Next Page</button>
+                     <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
+                     <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
                   </div>
                }
                <h6>Powered by NewsAPI.org</h6>
