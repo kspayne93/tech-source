@@ -16,7 +16,9 @@ export default class NewsSources extends Component {
    getNewsSources = async () => {
       try {
          let res = await axios.get(`/sources`);
-         await this.setState({ newsSources: res.data.sources })
+         await this.setState({
+            newsSources: res.data.sources
+         })
          console.log(res.data.sources)
          console.log('sources retrieved')
       } catch (error) {

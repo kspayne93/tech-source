@@ -82,15 +82,20 @@ export default class Search extends Component {
                <div className="article-container">
                   {articleCards}
                   {
-                     this.state.articles.length === 0 && <h1>Search Tech News from around the globe</h1>
+                     this.state.articles.length === 0 &&
+                     <>
+                        {/* <h1>Search Tech News from around the globe</h1> */}
+                        <i style={{color: 'gray', fontSize: '1.5rem'}}>Suggestions: "Tesla", "Apple", "Nintendo"</i>
+                     </>
                   }
                </div>
                {
                   this.state.articles.length > 0 &&
-                  <div className='page-button-container'>
-                     <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
-                     <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
-                  </div>
+                     <div className='page-button-container'>
+                        <button onClick={()=> this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
+                        <p>Previous Page</p>
+                        <button onClick={()=> this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
+                     </div>
                }
                <h6>Powered by NewsAPI.org</h6>
             </div>
