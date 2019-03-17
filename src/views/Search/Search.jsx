@@ -10,7 +10,7 @@ export default class Search extends Component {
       articles: [],
       page: 1,
       userInput: '',
-      sortBy: 'publishedAt',
+      sortBy: 'relevancy',
    }
 
    componentDidMount = async () => {
@@ -68,8 +68,8 @@ export default class Search extends Component {
                      <div className='page-button-container top-buttons'>
                         <span style={{ fontFamily: 'arial', fontSize: '12px' }} >Sort By: </span>
                         <select name="sort" id="sort" onChange={this.handleSelect} style={{ marginRight: '2rem' }}>
-                           <option value="publishedAt">Most Recent</option>
                            <option value="relevancy">Relevancy</option>
+                           <option value="publishedAt">Most Recent</option>
                            <option value="popularity">Popularity</option>
                         </select>
                         <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
