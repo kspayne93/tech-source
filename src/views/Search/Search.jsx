@@ -36,7 +36,10 @@ export default class Search extends Component {
    }
 
    handleSelect = async (event) => {
-      await this.setState({ sortBy: event.target.value });
+      await this.setState({ 
+         sortBy: event.target.value,
+         page: 1
+      });
       console.log(this.state.sortBy)
       await this.getArticles();
    }
@@ -72,8 +75,12 @@ export default class Search extends Component {
                            <option value="publishedAt">Most Recent</option>
                            <option value="popularity">Popularity</option>
                         </select>
-                        <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
-                        <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
+                        {
+                           this.state.page > 1 &&
+                           <button onClick={() => this.handlePageClick(-1)}> <i className="fas fa-arrow-left"></i> </button>
+
+                        }
+                        <button onClick={() => this.handlePageClick(1)}> <i className="fas fa-arrow-right"></i> </button>
                      </div>
                   }
                </div>
@@ -85,17 +92,21 @@ export default class Search extends Component {
                      this.state.articles.length === 0 &&
                      <>
                         {/* <h1>Search Tech News from around the globe</h1> */}
-                        <i style={{color: 'gray', fontSize: '1.5rem'}}>Suggestions: "Tesla", "Apple", "Nintendo"</i>
+                        <i style={{ color: 'gray', fontSize: '1.5rem' }}>Suggestions: "Tesla", "Apple", "Nintendo"</i>
                      </>
                   }
                </div>
                {
                   this.state.articles.length > 0 &&
-                     <div className='page-button-container'>
-                        <button onClick={()=> this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
-                        <p>Previous Page</p>
-                        <button onClick={()=> this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
-                     </div>
+                  <div className='page-button-container'>
+                     {
+                        this.state.page > 1 &&
+                        <button onClick={() => this.handlePageClick(-1)}> <i className="fas fa-arrow-left"></i> </button>
+
+                     }
+                     <p>Previous Page</p>
+                     <button onClick={() => this.handlePageClick(1)}> <i className="fas fa-arrow-right"></i> </button>
+                  </div>
                }
                <h6>Powered by NewsAPI.org</h6>
             </div>

@@ -17,6 +17,10 @@ export default class Home extends Component {
 
    getTrendingArticles = async () => {
       const { page } = this.state;
+      console.log(
+         `%cPage #: %c${page}`, // Console Message
+         'color: salmon', 'color: lightBlue' // CSS Style
+      );
       try {
          let res = await axios.get(`/topHeadlines/${page}`)
          await this.setState({ articles: res.data.articles })
@@ -29,6 +33,8 @@ export default class Home extends Component {
       await this.setState({ page: this.state.page + num })
       if (this.state.page <= 1) {
          await this.setState({ page: 1 })
+      } else if (this.state.page >= 5) {
+         await this.setState({ page: 4 })
       }
       await this.getTrendingArticles();
       await window.scrollTo(0, 0);
@@ -58,8 +64,14 @@ export default class Home extends Component {
                   {
                      this.state.articles.length > 0 &&
                      <div className='page-button-container top-buttons'>
-                        <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
-                        <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
+                        {
+                           this.state.page > 1 &&
+                           <button onClick={() => this.handlePageClick(-1)}> <i className="fas fa-arrow-left"></i> </button>
+                        }
+                        {
+                           this.state.page < 4 &&
+                           <button onClick={() => this.handlePageClick(1)}> <i className="fas fa-arrow-right"></i> </button>
+                        }
                      </div>
                   }
                </div>
@@ -71,8 +83,14 @@ export default class Home extends Component {
                {
                   this.state.articles.length > 0 &&
                   <div className='page-button-container'>
-                     <button onClick={() => this.handlePageClick(-1)}> <i class="fas fa-arrow-left"></i> </button>
-                     <button onClick={() => this.handlePageClick(1)}> <i class="fas fa-arrow-right"></i> </button>
+                     {
+                        this.state.page > 1 &&
+                        <button onClick={() => this.handlePageClick(-1)}> <i className="fas fa-arrow-left"></i> </button>
+                     }
+                     {
+                        this.state.page < 4 &&
+                        <button onClick={() => this.handlePageClick(1)}> <i className="fas fa-arrow-right"></i> </button>
+                     }
                   </div>
                }
                <h6>Powered by NewsAPI.org</h6>
